@@ -2271,6 +2271,7 @@
 /home/shijo/zephyrproject/zephyr/kernel/Kconfig.init
 /home/shijo/zephyrproject/zephyr/kernel/Kconfig.mem_domain
 /home/shijo/zephyrproject/zephyr/kernel/Kconfig.obj_core
+/home/shijo/zephyrproject/zephyr/kernel/Kconfig.sched_server
 /home/shijo/zephyrproject/zephyr/kernel/Kconfig.smp
 /home/shijo/zephyrproject/zephyr/kernel/Kconfig.vm
 /home/shijo/zephyrproject/zephyr/lib/Kconfig

@@ -141,6 +141,8 @@ k_ticks_t k_thread_timeout_expires_ticks__extern(const struct k_thread *thread) 
 k_ticks_t k_thread_timeout_remaining_ticks__extern(const struct k_thread *thread) { return k_thread_timeout_remaining_ticks(thread); }
 int k_thread_priority_get__extern(k_tid_t thread) { return k_thread_priority_get(thread); }
 void k_thread_priority_set__extern(k_tid_t thread, int prio) { k_thread_priority_set(thread, prio); }
+void k_thread_deadline_set__extern(k_tid_t thread, int deadline) { k_thread_deadline_set(thread, deadline); }
+void k_thread_absolute_deadline_set__extern(k_tid_t thread, int deadline) { k_thread_absolute_deadline_set(thread, deadline); }
 void k_reschedule__extern(void) { k_reschedule(); }
 void k_thread_suspend__extern(k_tid_t thread) { k_thread_suspend(thread); }
 void k_thread_resume__extern(k_tid_t thread) { k_thread_resume(thread); }
@@ -241,8 +243,6 @@ int k_thread_stack_space_get__extern(const struct k_thread *thread, size_t *unus
 int k_thread_runtime_stack_unused_threshold_pct_set__extern(struct k_thread *thread, uint32_t pct) { return k_thread_runtime_stack_unused_threshold_pct_set(thread, pct); }
 int k_thread_runtime_stack_unused_threshold_set__extern(struct k_thread *thread, size_t threshold) { return k_thread_runtime_stack_unused_threshold_set(thread, threshold); }
 size_t k_thread_runtime_stack_unused_threshold_get__extern(struct k_thread *thread) { return k_thread_runtime_stack_unused_threshold_get(thread); }
-void k_thread_deadline_set__extern(k_tid_t thread, int deadline) { k_thread_deadline_set(thread, deadline); }
-void k_thread_absolute_deadline_set__extern(k_tid_t thread, int deadline) { k_thread_absolute_deadline_set(thread, deadline); }
 int k_futex_wait__extern(struct k_futex *futex, int expected, k_timeout_t timeout) { return k_futex_wait(futex, expected, timeout); }
 int k_futex_wake__extern(struct k_futex *futex, bool wake_all) { return k_futex_wake(futex, wake_all); }
 bool gpio_is_ready_dt__extern(const struct gpio_dt_spec *spec) { return gpio_is_ready_dt(spec); }

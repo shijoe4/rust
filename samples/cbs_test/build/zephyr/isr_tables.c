@@ -15,11 +15,11 @@ const struct _isr_table_entry __sw_isr_table _sw_isr_table[1036] = {
 	{(const void *)0x0, (ISR)z_irq_spurious}, /* 4 */
 	{(const void *)0x0, (ISR)z_irq_spurious}, /* 5 */
 	{(const void *)0x0, (ISR)z_irq_spurious}, /* 6 */
-	{(const void *)0x0, (ISR)0x80005954}, /* 7 */
+	{(const void *)0x0, (ISR)0x8000cfae}, /* 7 */
 	{(const void *)0x0, (ISR)z_irq_spurious}, /* 8 */
 	{(const void *)0x0, (ISR)z_irq_spurious}, /* 9 */
 	{(const void *)0x0, (ISR)z_irq_spurious}, /* 10 */
-	{(const void *)0x80007b74, (ISR)0x80005496}, /* 11 */
+	{(const void *)0x8000fb88, (ISR)0x8000caec}, /* 11 */
 	/* Level 2 interrupts start here (offset: 12) */
 	{(const void *)0x0, (ISR)z_irq_spurious}, /* 12 */
 	{(const void *)0x0, (ISR)z_irq_spurious}, /* 13 */

@@ -45,6 +45,7 @@
 /home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test/build/zephyr/misc/generated/syscalls_links/include_zephyr_random
 /home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test/build/zephyr/misc/generated/syscalls_links/include_zephyr_retention
 /home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test/build/zephyr/misc/generated/syscalls_links/include_zephyr_rtio
+/home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test/build/zephyr/misc/generated/syscalls_links/include_zephyr_sched_server
 /home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test/build/zephyr/misc/generated/syscalls_links/include_zephyr_sd
 /home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test/build/zephyr/misc/generated/syscalls_links/include_zephyr_sensing
 /home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test/build/zephyr/misc/generated/syscalls_links/include_zephyr_settings

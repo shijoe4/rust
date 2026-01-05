@@ -18,7 +18,7 @@
 #define ___thread_base_t_user_options_OFFSET 0xc
 #define ___thread_t_base_OFFSET 0x0
 #define ___thread_t_callee_saved_OFFSET 0x30
-#define ___thread_t_arch_OFFSET 0x90
+#define ___thread_t_arch_OFFSET 0x94
 #define ___thread_t_switch_handle_OFFSET 0x84
 #define ___thread_t_stack_info_OFFSET 0x74
 #define ___thread_t_tls_OFFSET 0x8c

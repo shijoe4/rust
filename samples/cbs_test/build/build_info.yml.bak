@@ -1,5 +1,58 @@
+cmake:
+  application:
+    configuration-dir: '/home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test'
+    source-dir: '/home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test'
+  board:
+    name: 'qemu_riscv32'
+    path:
+     - '/home/shijo/zephyrproject/zephyr/boards/qemu/riscv32'
+    qualifiers: 'qemu_virt_riscv32'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/home/shijo/zephyrproject/zephyr/dts/bindings'
+    files:
+     - '/home/shijo/zephyrproject/zephyr/boards/qemu/riscv32/qemu_riscv32.dts'
+    include-dirs:
+     - '/home/shijo/zephyrproject/modules/hal/ambiq/dts'
+     - '/home/shijo/zephyrproject/modules/hal/atmel/include'
+     - '/home/shijo/zephyrproject/modules/hal/bouffalolab/include'
+     - '/home/shijo/zephyrproject/modules/hal/bouffalolab/include/zephyr'
+     - '/home/shijo/zephyrproject/modules/hal/gigadevice/include'
+     - '/home/shijo/zephyrproject/modules/hal/microchip/include'
+     - '/home/shijo/zephyrproject/modules/hal/microchip/dts'
+     - '/home/shijo/zephyrproject/modules/hal/nuvoton/dts'
+     - '/home/shijo/zephyrproject/modules/hal/nxp/dts'
+     - '/home/shijo/zephyrproject/modules/hal/stm32/dts'
+     - '/home/shijo/zephyrproject/modules/hal/ti/dts'
+     - '/home/shijo/zephyrproject/zephyr/include'
+     - '/home/shijo/zephyrproject/zephyr/include/zephyr'
+     - '/home/shijo/zephyrproject/zephyr/dts/common'
+     - '/home/shijo/zephyrproject/zephyr/dts/vendor'
+     - '/home/shijo/zephyrproject/zephyr/dts/rx'
+     - '/home/shijo/zephyrproject/zephyr/dts/x86'
+     - '/home/shijo/zephyrproject/zephyr/dts/xtensa'
+     - '/home/shijo/zephyrproject/zephyr/dts/sparc'
+     - '/home/shijo/zephyrproject/zephyr/dts/riscv'
+     - '/home/shijo/zephyrproject/zephyr/dts/posix'
+     - '/home/shijo/zephyrproject/zephyr/dts/arm64'
+     - '/home/shijo/zephyrproject/zephyr/dts/arm'
+     - '/home/shijo/zephyrproject/zephyr/dts/arc'
+     - '/home/shijo/zephyrproject/zephyr/dts'
+  kconfig:
+    files:
+     - '/home/shijo/zephyrproject/zephyr/boards/qemu/riscv32/qemu_riscv32_defconfig'
+     - '/home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test/prj.conf'
+    user-files:
+     - '/home/shijo/zephyrproject/modules/lang/rust/samples/cbs_test/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/home/shijo/zephyr-sdk-0.17.4'
+  zephyr:
+    version: '4.3.99'
+    zephyr-base: '/home/shijo/zephyrproject/zephyr'
+version: '0.1.0'
 west:
-  command: /home/shijo/zephyrproject/.venv/bin/west build -b qemu_riscv32 -p always
-    .
-  topdir: /home/shijo/zephyrproject
-  version: 1.5.0
+  command: '/home/shijo/zephyrproject/.venv/bin/west build -b qemu_riscv32 -p always -t menuconfig'
+  topdir: '/home/shijo/zephyrproject'
+  version: '1.5.0'

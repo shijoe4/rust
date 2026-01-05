@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x80000000
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          1732744 (bytes into file)
+  Start of section headers:          1923632 (bytes into file)
   Flags:                             0x1, RVC, soft-float ABI
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -22,41 +22,41 @@ ELF Header:
 Section Headers:
   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
-  [ 1] rom_start         PROGBITS        80000000 0000d4 000018 00  AX  0   0  4
-  [ 2] reset             PROGBITS        80000018 0000ec 000004 00  AX  0   0  4
-  [ 3] exceptions        PROGBITS        8000001c 0000f0 000172 00  AX  0   0  4
-  [ 4] text              PROGBITS        80000190 000264 0079a2 00  AX  0   0  4
-  [ 5] initlevel         PROGBITS        80007b34 007c08 000040 00   A  0   0  4
-  [ 6] device_area       PROGBITS        80007b74 007c48 000038 00   A  0   0  4
-  [ 7] sw_isr_table      PROGBITS        80007bac 007c80 002060 00   A  0   0  4
-  [ 8] uart_driver_[...] PROGBITS        80009c0c 009ce0 000014 00   A  0   0  4
-  [ 9] log_const_area    PROGBITS        80009c20 009cf4 000048 00   A  0   0  4
-  [10] log_backend_area  PROGBITS        80009c68 009d3c 000010 00   A  0   0  4
-  [11] intc_table_area   PROGBITS        80009c78 009d4c 000010 00   A  0   0  4
-  [12] tbss              NOBITS          80009c88 009d5c 000008 00 WAT  0   0  4
-  [13] rodata            PROGBITS        80009c88 009d5c 0013e0 00   A  0   0  4
-  [14] rom_mpu_padding   NOBITS          8000b068 00b13c 000f98 00  WA  0   0  1
-  [15] datas             PROGBITS        8000c000 00b140 0000f4 00  WA  0   0  8
-  [16] device_states     PROGBITS        8000c0f4 00b234 000004 00  WA  0   0  1
-  [17] log_mpsc_pbu[...] PROGBITS        8000c0f8 00b238 000038 00  WA  0   0  4
-  [18] log_msg_ptr_area  PROGBITS        8000c130 00b270 000004 00  WA  0   0  4
-  [19] k_sem_area        PROGBITS        8000c134 00b274 000010 00  WA  0   0  4
-  [20] bss               NOBITS          8000c148 00b284 0007f8 00  WA  0   0  8
-  [21] noinit            NOBITS          8000c940 00b284 002900 00  WA  0   0 16
-  [22] .last_ram_section PROGBITS        8000f240 00b284 000000 00   W  0   0  1
-  [23] .comment          PROGBITS        00000000 00b284 00004c 01  MS  0   0  1
-  [24] .debug_aranges    PROGBITS        00000000 00b2d0 0030e8 00      0   0  8
-  [25] .debug_info       PROGBITS        00000000 00e3b8 092f11 00      0   0  1
-  [26] .debug_abbrev     PROGBITS        00000000 0a12c9 00b94f 00      0   0  1
-  [27] .debug_line       PROGBITS        00000000 0acc18 0570de 00      0   0  1
-  [28] .debug_frame      PROGBITS        00000000 103cf8 004964 00      0   0  4
-  [29] .debug_str        PROGBITS        00000000 10865c 058e4a 01  MS  0   0  1
-  [30] .debug_loc        PROGBITS        00000000 1614a6 021ce6 00      0   0  1
-  [31] .debug_ranges     PROGBITS        00000000 183190 0159a0 00      0   0  8
-  [32] .riscv.attributes RISCV_ATTRIBUTE 00000000 198b30 000044 00      0   0  1
-  [33] .symtab           SYMTAB          00000000 198b74 006ab0 10     34 724  4
-  [34] .strtab           STRTAB          00000000 19f624 0078c5 00      0   0  1
-  [35] .shstrtab         STRTAB          00000000 1a6ee9 00019c 00      0   0  1
+  [ 1] rom_start         PROGBITS        80000000 0000d8 000018 00  AX  0   0  4
+  [ 2] reset             PROGBITS        80000018 0000f0 000004 00  AX  0   0  4
+  [ 3] exceptions        PROGBITS        8000001c 0000f4 000172 00  AX  0   0  4
+  [ 4] text              PROGBITS        80000190 000268 00f9ae 00  AX  0   0  4
+  [ 5] initlevel         PROGBITS        8000fb40 00fc18 000048 00   A  0   0  4
+  [ 6] device_area       PROGBITS        8000fb88 00fc60 000038 00   A  0   0  4
+  [ 7] sw_isr_table      PROGBITS        8000fbc0 00fc98 002060 00   A  0   0  4
+  [ 8] uart_driver_[...] PROGBITS        80011c20 011cf8 000014 00   A  0   0  4
+  [ 9] log_const_area    PROGBITS        80011c34 011d0c 000058 00   A  0   0  4
+  [10] log_backend_area  PROGBITS        80011c8c 011d64 000010 00   A  0   0  4
+  [11] intc_table_area   PROGBITS        80011c9c 011d74 000010 00   A  0   0  4
+  [12] tbss              NOBITS          80011cac 011d84 000008 00 WAT  0   0  4
+  [13] rodata            PROGBITS        80011cb0 011d88 002600 00   A  0   0  8
+  [14] rom_mpu_padding   NOBITS          800142b0 014388 000d50 00  WA  0   0  1
+  [15] datas             PROGBITS        80015000 014390 0001d4 00  WA  0   0  8
+  [16] device_states     PROGBITS        800151d4 014564 000004 00  WA  0   0  1
+  [17] log_mpsc_pbu[...] PROGBITS        800151d8 014568 000038 00  WA  0   0  4
+  [18] log_msg_ptr_area  PROGBITS        80015210 0145a0 000004 00  WA  0   0  4
+  [19] k_sem_area        PROGBITS        80015214 0145a4 000010 00  WA  0   0  4
+  [20] bss               NOBITS          80015228 0145b4 000820 00  WA  0   0  8
+  [21] noinit            NOBITS          80015a50 0145b4 003100 00  WA  0   0 16
+  [22] .last_ram_section PROGBITS        80018b50 0145b4 000000 00   W  0   0  1
+  [23] .comment          PROGBITS        00000000 0145b4 00004c 01  MS  0   0  1
+  [24] .debug_aranges    PROGBITS        00000000 014600 0033a0 00      0   0  8
+  [25] .debug_info       PROGBITS        00000000 0179a0 0a12c6 00      0   0  1
+  [26] .debug_abbrev     PROGBITS        00000000 0b8c66 00d63d 00      0   0  1
+  [27] .debug_line       PROGBITS        00000000 0c62a3 061a75 00      0   0  1
+  [28] .debug_frame      PROGBITS        00000000 127d18 005170 00      0   0  4
+  [29] .debug_str        PROGBITS        00000000 12ce88 05991f 01  MS  0   0  1
+  [30] .debug_loc        PROGBITS        00000000 1867a7 0275e7 00      0   0  1
+  [31] .debug_ranges     PROGBITS        00000000 1add90 016d80 00      0   0  8
+  [32] .riscv.attributes RISCV_ATTRIBUTE 00000000 1c4b10 000044 00      0   0  1
+  [33] .symtab           SYMTAB          00000000 1c4b54 0080a0 10     34 993  4
+  [34] .strtab           STRTAB          00000000 1ccbf4 008c9e 00      0   0  1
+  [35] .shstrtab         STRTAB          00000000 1d5892 00019c 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
   L (link order), O (extra OS processing required), G (group), T (TLS),
@@ -65,10 +65,10 @@ Key to Flags:
 
 Program Headers:
   Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
-  RISCV_ATTRIBUT 0x198b30 0x00000000 0x00000000 0x00044 0x00000 R   0x1
-  LOAD           0x0000d4 0x80000000 0x80000000 0x0b068 0x0c000 RWE 0x4
-  LOAD           0x00b140 0x8000c000 0x8000c000 0x00144 0x03240 RW  0x10
-  TLS            0x009d5c 0x80009c88 0x80009c88 0x00000 0x00008 R   0x4
+  RISCV_ATTRIBUT 0x1c4b10 0x00000000 0x00000000 0x00044 0x00000 R   0x1
+  LOAD           0x0000d8 0x80000000 0x80000000 0x142b0 0x15000 RWE 0x8
+  LOAD           0x014390 0x80015000 0x80015000 0x00224 0x03b50 RW  0x10
+  TLS            0x011d84 0x80011cac 0x80011cac 0x00000 0x00008 R   0x4
   GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x10
 
  Section to Segment mapping:

@@ -53,6 +53,6 @@ cmake:
     zephyr-base: '/home/shijo/zephyrproject/zephyr'
 version: '0.1.0'
 west:
-  command: '/home/shijo/zephyrproject/.venv/bin/west build -b qemu_riscv32 -p always .'
+  command: '/home/shijo/zephyrproject/.venv/bin/west build -b qemu_riscv32 -p always -t menuconfig'
   topdir: '/home/shijo/zephyrproject'
   version: '1.5.0'
