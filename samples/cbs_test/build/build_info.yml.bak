@@ -1,0 +1,5 @@
+west:
+  command: /home/shijo/zephyrproject/.venv/bin/west build -b qemu_riscv32 -p always
+    .
+  topdir: /home/shijo/zephyrproject
+  version: 1.5.0

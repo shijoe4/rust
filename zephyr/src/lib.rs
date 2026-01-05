@@ -67,7 +67,9 @@
 #![no_std]
 #![allow(unexpected_cfgs)]
 #![deny(missing_docs)]
-
+extern crate self as zephyr;
+/// Module structure
+pub mod cbs;
 pub mod align;
 pub mod device;
 pub mod embassy;

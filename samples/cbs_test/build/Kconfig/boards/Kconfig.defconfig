@@ -1,0 +1,2 @@
+# Load Zephyr board defconfig descriptions.
+osource "/home/shijo/zephyrproject/zephyr/boards/qemu/riscv32/Kconfig.defconfig"
