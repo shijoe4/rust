@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 #![no_std]
-use zephyr::cbs;
+use zephyr::cbs::cbs;
 
 use zephyr::time::{sleep, Duration};
 use zephyr::printkln;
@@ -10,13 +10,13 @@ use zephyr::printkln;
 extern "C" fn rust_main() {
     printkln!("Starting CBS test");
 
-    let mut my_cbs1 = cbs::cbs::cbs::new(5, b"cbs_thread 1", 1000, 2000);
-    server_handle1 =my_cbs1.start();
+    let mut my_cbs1 = cbs::cbs::new(5, b"cbs_thread 1", 1000, 2000);
+    let server_handle1 = my_cbs1.start()?;
 
 
 
-    let mut my_cbs2 = cbs::cbs::cbs::new(5, b"cbs_thread 2", 1000, 2000);
-    let server_handle2  my_cbs2.start();
+    let mut my_cbs2 = cbs::cbs::new(5, b"cbs_thread 2", 1000, 2000);
+    let server_handle2 = my_cbs2.start()?;
 
     loop {
         // Main thread logic goes here

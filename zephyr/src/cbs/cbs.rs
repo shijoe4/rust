@@ -43,32 +43,25 @@ pub  fn new(priority: c_int, name: &[u8], budget: i64, period: i64) -> Self {
 
     }
 /// Start the CBS thread    
-pub fn start(&mut self)-> Result<RunningThread, Error>   {
+pub fn start(&mut self)-> Result<RunningThread, &'static str>   {
     let (sender, receiver) = unbounded::<Box<dyn FnOnce() + Send + 'static>>();
     self.sender = Some(sender);
-   let server_cbs = Some(cbs_thread(receiver,self.budget,self.period,self.name.clone()));
+   let mut server_cbs = Some(cbs_thread(receiver,self.budget,self.period,self.name.clone()));
      match server_cbs {
         None => {
             printkln!("Failed to create CBS thread");
-            return Err(Error::new("ThreadCreationFailed"));
+            return Err("ThreadCreationFailed");
         }
         Some(ref mut s) => s,
     };
 
-    let server = server_cbs.take().ok_or(Error(1))?; // unwrap or return Error
+let server = server_cbs.unwrap() ;// unwrap or return Error
 server.set_priority(self.priority);
       // server_cbs.set_priority(self.priority);
      //  server_cbs.set_name(&self.name);
-     let cbs_server = Some(server_cbs.start());
-        match cbs_server {
-            None => {
-                printkln!("Failed to start CBS thread");
-                 return Err(Error::new("ThreadCreationFailed"));
-            }
-            Some(t) => t,
-
-
-};
+  let cbs_server=server.start();
+    Ok(cbs_server)
+    //Ok(server)
 }
 
 /// Push a job to the CBS thread
