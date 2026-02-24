@@ -9,14 +9,29 @@ use zephyr::printkln;
 #[no_mangle]
 extern "C" fn rust_main() {
     printkln!("Starting CBS test");
+    printkln!("Hello world from Rust on {}", zephyr::kconfig::CONFIG_BOARD);
+    printkln!("CBS count: {}", zephyr::kconfig::CONFIG_CBS_COUNT);
 
     let mut my_cbs1 = cbs::cbs::new(5, b"cbs_thread 1", 1000, 2000);
-    let server_handle1 = my_cbs1.start()?;
+    let server_handle1 = match my_cbs1.start(){
+        Ok(handle) => handle,
+        Err(_) => {
+            printkln!("Failed to start CBS thread 1");
+            return;
+        }
+    };
+    
 
 
 
     let mut my_cbs2 = cbs::cbs::new(5, b"cbs_thread 2", 1000, 2000);
-    let server_handle2 = my_cbs2.start()?;
+    let server_handle2 = match my_cbs2.start(){
+        Ok(handle) => handle,
+        Err(_) => {
+            printkln!("Failed to start CBS thread 2");
+            return;
+        }
+    };
 
     loop {
         // Main thread logic goes here
@@ -44,6 +59,7 @@ fn add_x(a: i32, b: i32)
 {
     let c = a + b;
     printkln!("Sum is: {}", c);
+    
 }
 
 fn add_xf(a: f32, b: f32)

@@ -1,0 +1,24 @@
+
+# This is a generated sample .cargo/config.toml file from the Zephyr build.
+# At the time of generation, this represented the settings needed to allow
+# a `cargo build` command to compile the rust code using the current Zephyr build.
+# If any settings in the Zephyr build change, this could become out of date.
+[build]
+target = "riscv32i-unknown-none-elf"
+target-dir = "/home/shijo/zephyrproject/modules/lang/rust/samples/hello_world/build/rust/target"
+
+[env]
+BUILD_DIR = "/home/shijo/zephyrproject/modules/lang/rust/samples/hello_world/build"
+DOTCONFIG = "/home/shijo/zephyrproject/modules/lang/rust/samples/hello_world/build/zephyr/.config"
+ZEPHYR_DTS = "/home/shijo/zephyrproject/modules/lang/rust/samples/hello_world/build/zephyr/zephyr.dts"
+INCLUDE_DIRS = "/home/shijo/zephyrproject/modules/lang/rust/samples/hello_world/build/zephyr/include/generated/zephyr;/home/shijo/zephyrproject/zephyr/include;/home/shijo/zephyrproject/modules/lang/rust/samples/hello_world/build/zephyr/include/generated;/home/shijo/zephyrproject/zephyr/soc/qemu/virt_riscv;/home/shijo/zephyrproject/zephyr/lib/libc/picolibc/include;/home/shijo/zephyrproject/zephyr/lib/libc/common/include;/home/shijo/zephyrproject/zephyr/lib/posix/c_lib_ext/getopt;/home/shijo/zephyrproject/zephyr/lib/midi2/.;/home/shijo/zephyrproject/zephyr/soc/common/riscv-privileged/.;/home/shijo/zephyrproject/modules/hal/microchip/include;/home/shijo/zephyrproject/modules/hal/st/sensor/inc;/home/shijo/zephyrproject/modules/hal/ti/mspm0/source/ti/devices/msp/.;/home/shijo/zephyrproject/modules/hal/ti/mspm0/source/ti/devices/msp/m0p;/home/shijo/zephyrproject/modules/hal/ti/mspm0/source/ti/devices/msp/peripherals;/home/shijo/zephyrproject/modules/hal/ti/mspm0/source/ti/devices/msp/peripherals/m0p;/home/shijo/zephyrproject/modules/hal/ti/mspm0/source/ti/devices/msp/peripherals/m0p/sysctl;"
+INCLUDE_DEFINES = "KERNEL;__ZEPHYR__=1;;__LINUX_ERRNO_EXTENSIONS__;PICOLIBC_LONG_LONG_PRINTF_SCANF;_POSIX_THREAD_SAFE_FUNCTIONS=200809L;ZVFS_OPEN_SIZE=0;K_HEAP_MEM_POOL_SIZE=0"
+WRAPPER_FILE = "/home/shijo/zephyrproject/modules/lang/rust/samples/hello_world/build/rust/wrapper.c"
+BINARY_DIR_INCLUDE_GENERATED = "/home/shijo/zephyrproject/modules/lang/rust/samples/hello_world/build/zephyr/include/generated/zephyr"
+DT_AUGMENTS = "/home/shijo/zephyrproject/modules/lang/rust/dt-rust.yaml"
+
+[patch.crates-io]
+zephyr.path = "/home/shijo/zephyrproject/modules/lang/rust/zephyr"
+zephyr-build.path = "/home/shijo/zephyrproject/modules/lang/rust/zephyr-build"
+zephyr-sys.path = "/home/shijo/zephyrproject/modules/lang/rust/zephyr-sys"
+

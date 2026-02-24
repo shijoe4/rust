@@ -3,10 +3,12 @@ extern crate alloc;
 use alloc::boxed::Box;
 use zephyr::printkln;
 use crate::time::{Duration,sleep};
- use crate::Error;
+use core::error::Error;
+use core::fmt;
 use core::ffi::c_int;
 use crate::sync::channel::Sender;
 use crate::sync::channel::unbounded;
+use zephyr::sync::{SpinMutex};
 use core::mem::MaybeUninit;
 use core::ptr;
 use core::ffi::c_char;
@@ -15,6 +17,31 @@ use crate::thread::RunningThread;
 #[allow(dead_code)]
 #[allow(non_camel_case_types)]
 /// Constant Bandwidth Server (CBS) struct
+
+const CBS_SERVER_NUMBER: usize = zephyr::kconfig::CONFIG_CBS_COUNT  as usize;
+const CBS_SERVER_SIZE: usize = zephyr::kconfig::CONFIG_CBS_THREAD_STACK_SIZE  as usize;
+static CBS_COUNT: SpinMutex<usize> = SpinMutex::new(0);
+/// CBS error enum
+#[derive(Debug)]
+pub enum CBSError {
+    /// Error when creating CBS thread
+    ThreadCreationFailed,
+    /// Error when joining CBS thread
+    ThreadJoinFailed,
+}
+
+impl fmt::Display for CBSError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::ThreadCreationFailed => write!(f, "Failed to create CBS thread"),
+            Self::ThreadJoinFailed => write!(f, "Failed to join CBS thread"),
+        }
+    }
+}
+/// Implement the Error trait for CBSError
+impl Error for CBSError {}
+
+/// cbs struct 
 pub struct cbs {
     /// CBS parameter priorty
                 pub priority: c_int,
@@ -43,25 +70,47 @@ pub  fn new(priority: c_int, name: &[u8], budget: i64, period: i64) -> Self {
 
     }
 /// Start the CBS thread    
-pub fn start(&mut self)-> Result<RunningThread, &'static str>   {
+pub fn start(&mut self)-> Result<RunningThread, CBSError> {
+
+     if *CBS_COUNT.lock().unwrap() < CBS_SERVER_NUMBER {
+        *CBS_COUNT.lock().unwrap() += 1;
+    
+
     let (sender, receiver) = unbounded::<Box<dyn FnOnce() + Send + 'static>>();
     self.sender = Some(sender);
    let mut server_cbs = Some(cbs_thread(receiver,self.budget,self.period,self.name.clone()));
-     match server_cbs {
-        None => {
-            printkln!("Failed to create CBS thread");
-            return Err("ThreadCreationFailed");
-        }
-        Some(ref mut s) => s,
-    };
 
-let server = server_cbs.unwrap() ;// unwrap or return Error
+let server = match server_cbs{
+    Some(handle) => handle,
+    None => {
+        printkln!("Failed to create CBS thread");
+        return Err(CBSError::ThreadCreationFailed);
+    }
+};
+
+
+
+
+// unwrap or return Error
 server.set_priority(self.priority);
-      // server_cbs.set_priority(self.priority);
-     //  server_cbs.set_name(&self.name);
-  let cbs_server=server.start();
-    Ok(cbs_server)
-    //Ok(server)
+
+  let cbs_server=Some(server.start());
+
+let cbs_start=  match cbs_server {
+    Some(handle) => handle,
+    None => {
+        printkln!("Failed to start CBS thread");
+        return Err(CBSError::ThreadCreationFailed);
+    }
+
+};
+
+Ok(cbs_start)
+     }
+     else {
+        printkln!("CBS thread limit reached");
+        Err(CBSError::ThreadCreationFailed)
+}
 }
 
 /// Push a job to the CBS thread
@@ -79,7 +128,7 @@ server.set_priority(self.priority);
 
 
 
-#[zephyr::thread(stack_size = 2048, pool_size = 2)]
+#[zephyr::thread(stack_size = CBS_SERVER_SIZE, pool_size = CBS_SERVER_NUMBER)]
 /// CBS thread function
 fn cbs_thread(receiver: zephyr::sync::channel::Receiver<Box<dyn FnOnce() + Send + 'static>>, budget: i64, period: i64, name: Box<[u8]>) {
     // let _receiver = receiver;
@@ -129,3 +178,6 @@ fn u8_to_c_char_ptr(slice: &[u8], dest: *mut c_char) {
     }
 }
     
+
+
+
